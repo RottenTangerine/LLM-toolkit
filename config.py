@@ -1,6 +1,8 @@
 from pydantic_settings import BaseSettings
 from pydantic import Field
 
+import os
+env_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".env"))
 
 class Settings(BaseSettings):
     # DeepSeek 配置
@@ -38,7 +40,7 @@ class Settings(BaseSettings):
     )
 
     class Config:
-        env_file = ".env"  # 确保 .env 文件在项目根目录
+        env_file = env_path  # 确保 .env 文件在项目根目录
         env_file_encoding = "utf-8"
         extra = "ignore"  # 忽略未定义的字段
 
